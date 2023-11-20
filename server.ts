@@ -28,9 +28,9 @@ express.urlencoded({limit:"50mb", extended: false})
 express.json({limit:"50mb"})
      
 // Run MongoDB
-mongoose.connect(process.env.MONGODB_URI || `mongodb://127.0.0.1:27017/sendrr-backend`)
-const connection = mongoose.connection
-connection.once('open', ()=>{console.log('Database running Successfully')});
+// mongoose.connect(process.env.MONGODB_URI || `mongodb://127.0.0.1:27017/sendrr-backend`)
+// const connection = mongoose.connection
+// connection.once('open', ()=>{console.log('Database running Successfully')});
       
 //render the html file
 app.get('/', (req, res) => {
