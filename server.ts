@@ -130,12 +130,19 @@ io.on("connection", (socket:  any)=>{
 
   socket.on("send", (content: Sendrr)=> {
     let sendrrContent = content.content;
-    let socketId = getDeviceByUsername(content.receiverUsername, clientAddresses).socketId
+    let device = getDeviceByUsername(content.receiverUsername, clientAddresses)
+    if(device){
+      let socketId = device.socketId
     // let device = 
     console.log(socketId)
 
     io.to(socketId).emit("receive", {content})
-
+    }
+    
+    else{ 
+      console.log("error")
+      io.to(socket.id).emit("error", "Device Not Connected")
+  }
   })
 })
       
